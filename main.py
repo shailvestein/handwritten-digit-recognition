@@ -17,7 +17,7 @@ def image_resize(image, DIM=(256,256)):
 
 def preprocess_image(image):
     resized_image = image_resize(np.array(image), DIM=DIM)
-    expanded_dim_image = tf.expand_dims(resized_img, 0)
+    expanded_dim_image = tf.expand_dims(resized_image, 0)
     return expanded_dim_image
 
 
