@@ -1,4 +1,5 @@
 import numpy as np
+import cv2
 from PIL import Image, ImageOps
 import tensorflow as tf
 from tensorflow import keras
@@ -7,8 +8,9 @@ import streamlit as st
 
 def image_resize(image, width = 28, height = 28):
     # resize the image
-    resized_image = image.resize((height,width), Image.ANTIALIAS)
-    gray_image = ImageOps.grayscale(resized_image)
+    dim = (height, width)
+    resized = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
+    gray_image = cv2.cvtColor(resized, interpolation = cv2.COLOR_BGR2GRAY)
     return np.array(gray_image)
 
 
