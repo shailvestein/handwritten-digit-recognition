@@ -4,7 +4,7 @@ from PIL import *
 import tensorflow as tf
 import streamlit as st
 
-def image_resize(image, width = None, height = None, inter = cv2.INTER_AREA):
+def image_resize(image, width = None, height = None):
     # resize the image
 #     resized = cv2.resize(image, dim, interpolation = inter)
 #     resized = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
