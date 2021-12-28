@@ -69,7 +69,7 @@ with st.form("input_form"):
     # source: https://discuss.streamlit.io/t/change-font-size-and-font-color/12377/3
     # enter_review_here = '<p style="color:Black; font-size: 20px;">Upload numerical digit here</p>'
     # st.markdown(enter_review_here, unsafe_allow_html=True)
-    uploaded_file = st.file_uploader("Choose a file")
+    uploaded_file = st.file_uploader("Choose a file", type="jpg")
     st.markdown('')
     st.markdown('')
     # Predict digit button
