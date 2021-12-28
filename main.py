@@ -5,32 +5,48 @@ import tensorflow as tf
 from tensorflow import keras
 import streamlit as st
 
+from tensorflow.keras.layers import Input, Conv2D, Dropout, MaxPool2D, Dense, Flatten
+from tensorflow.keras.models import Model
 
-def image_resize(image, width = 28, height = 28):
+DIM = (256, 256)
+
+def image_resize(image, DIM):
     # resize the image
-    dim = (height, width)
-    image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
+    image = cv2.resize(image, DIM, interpolation = cv2.INTER_AREA)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    return np.array(image)
-
-
-
-def load_model():
-    seq_model = keras.Sequential([
-                                  keras.layers.Dense(500, input_shape=(784,), activation='relu'),
-                                  keras.layers.Dense(100, activation='relu'),
-                                  keras.layers.Dense(10, activation='sigmoid')
-                                ])
-    seq_model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics='accuracy')
-    seq_model.load_weights('./digit_recognizer_model.h5')
-    return seq_model
+    return image
 
 
 def preprocess_image(image):
     resized_image = image_resize(np.array(image))
-    normalized_image = resized_image/255
-    normalized_image = normalized_image.reshape(1,-1)
-    return normalized_image
+    expanded_dim_image = tf.expand_dims(resized_image, 0)
+    return expanded_dim_image
+
+
+def load_model():
+
+    inputs = Input(shape=(DIM[0], DIM[1], 3))
+    conv1 = Conv2D(8, (3,3), activation='relu')(inputs)
+    pool = MaxPool2D()(conv1)
+    conv2 = Conv2D(16, (3,3), activation='relu')(pool)
+    pool = MaxPool2D()(conv2)
+    conv3 = Conv2D(16, (3,3), activation='relu')(pool)
+    pool = MaxPool2D()(conv3)
+    conv4 = Conv2D(16, (3,3), activation='relu')(pool)
+    flatten = Flatten()(conv4)
+    layer = Dense(256, activation='relu')(flatten)
+    dropout = Dropout(0.1)(layer)
+    layer = Dense(128, activation='relu')(dropout)
+    dropout = Dropout(0.1)(layer)
+    layer = Dense(64, activation='relu')(dropout)
+
+    output = Dense(10, activation='softmax')(layer)
+
+    model = Model(inputs=inputs, outputs=output)
+
+    model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics='accuracy')
+    model.load_weights('./digit_recognizer_model.h5')
+    return model
 
 
 def predict_digit(preprocessed_image, model):
@@ -95,9 +111,9 @@ else:
         # input_image = image.rotate(90, Image.NEAREST, expand = 1)
         st.image(image, caption='Uploaded digit image', width=200)
 
-        image = preprocess_image(image)
+        input_image = preprocess_image(image)
 
-        digit = predict_digit(image, model)
+        digit = predict_digit(input_image, model)
 
         output = f"Digit: {digit}"
         st.text(digit)
