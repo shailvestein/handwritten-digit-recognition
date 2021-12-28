@@ -4,7 +4,8 @@ from PIL import *
 import tensorflow as tf
 from tensorflow import keras
 import streamlit as st
-import cv2
+
+H, W = 28, 28
 
 def image_resize(image, width = None, height = None):
     # resize the image
@@ -75,9 +76,8 @@ with st.form("input_form"):
     st.markdown('')
     # Predict digit button
     submitted = st.form_submit_button("Recognize digit")
-
-# image = Image.open(uploaded_file)
-
+    
+    
 
 # if submitted:
 #     # If user dosen't enter any word/sentence and press predict polarity than show this message
@@ -100,7 +100,11 @@ with st.form("input_form"):
             
 if submitted:
     image = Image.open(uploaded_file)
+    
+    image = image.resize((H,W), Image.ANTIALIAS)
     image = np.array(image)
+    
+    
     imgtype = type(image)
     imgshape = image.shape
 
