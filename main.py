@@ -57,8 +57,8 @@ st.markdown(header_title, unsafe_allow_html=True)
 # header_text_1 = '<p style="color:Black; font-size: 20px;">1.  This is AI based web-app, it uses support-vector-machine algorithm in backend to find polarity score.</p>'
 header_text_1 = '<p style="color:Black; font-size: 20px;">1.  This is AI based web-app.</p>'
 header_text_2 = '<p style="color:Black; font-size: 20px;">2.  It tells which numerical digit is in the picture.</p>' # This app is 86% confident that given review is good/bad.</p>'
-text_1 = '<p style="color:Black; font-size: 15px;">The image dimension ratio should be 1:1 for best result.</p>'
-text_2 = '<p style="color:Black; font-size: 15px;>The digit written by hand should be bold and large. Use thick marker for better result.</p>'
+text_1 = '<p style="color:Black; font-size: 20px;">The image dimension ratio should be 1:1 for best result.</p>'
+text_2 = '<p style="color:Black; font-size: 20px;">The digit written by hand should be bold and large. Use thick marker to write digit for better result.</p>'
 st.markdown(header_text_1, unsafe_allow_html=True)
 st.markdown(header_text_2, unsafe_allow_html=True)
 st.markdown(text_1, unsafe_allow_html=True)
