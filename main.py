@@ -2,6 +2,7 @@ import numpy as np
 from PIL import Image
 from PIL import *
 import tensorflow as tf
+from tensorflow import keras
 import streamlit as st
 
 def image_resize(image, width = None, height = None):
@@ -15,7 +16,7 @@ def image_resize(image, width = None, height = None):
 
 
 def load_model():
-    seq_model = tf.keras.Sequential([
+    seq_model = keras.Sequential([
                                   keras.layers.Dense(500, input_shape=(784,), activation='relu'),
                                   keras.layers.Dense(100, activation='relu'),
                                   keras.layers.Dense(10, activation='sigmoid')
