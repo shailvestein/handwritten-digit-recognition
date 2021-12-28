@@ -61,8 +61,8 @@ text_1 = '<p style="color:Black; font-size: 15px;">The image dimension ratio sho
 text_2 = '<p style="color:Black; font-size: 15px;>The digit written by hand should be bold and large. Use thick marker for better result.</p>'
 st.markdown(header_text_1, unsafe_allow_html=True)
 st.markdown(header_text_2, unsafe_allow_html=True)
-st.text(text_1)
-st.text(text_2)
+st.markdown(text_1, unsafe_allow_html=True)
+st.markdown(text_2, unsafe_allow_html=True)
 
 
 with st.form("input_form"):
