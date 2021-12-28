@@ -72,8 +72,11 @@ with st.form("input_form"):
     # Predict digit button
     submitted = st.form_submit_button("Recognize digit")
 
-if uploaded_file is not None:
+if uploaded_file is None and submitted:
+    preicting_text = '<p style="color:White; text-align:center; background-color:Red; font-size: 20px;">please upload an image contains digit!</p>'
+    st.markdown(preicting_text, unsafe_allow_html=True)
     
+else:
     if submitted:
 
         
@@ -88,9 +91,6 @@ if uploaded_file is not None:
 
         output = f"Digit: {str(digit)}"
         st.success(output)
-else:
-    preicting_text = '<p style="color:White; text-align:center; background-color:Red; font-size: 20px;">please upload an image contains digit!</p>'
-    st.markdown(preicting_text, unsafe_allow_html=True)
     
     
 hide_footer_style = """
