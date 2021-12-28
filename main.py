@@ -1,6 +1,5 @@
 import numpy as np
 from PIL import Image, ImageOps
-# from PIL import *
 import tensorflow as tf
 from tensorflow import keras
 import streamlit as st
@@ -97,7 +96,7 @@ with st.form("input_form"):
             
 if submitted:
     image = Image.open(uploaded_file)
-    input_image = image.rotate(90, PIL.Image.NEAREST, expand = 1)
+    input_image = image.rotate(90, Image.NEAREST, expand = 1)
     st.image(input_image, caption='Uploaded digit image')
     
     image = preprocess_image(image)    
