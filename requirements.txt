@@ -1,5 +1,5 @@
 pip
 streamlit
 Pillow
-opencv-python
+opencv-python-headless
 tensorflow-gpu==2.5.0
