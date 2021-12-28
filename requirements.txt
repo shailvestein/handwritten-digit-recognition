@@ -1,3 +1,4 @@
+--upgrade pip
 streamlit
 Pillow
 tensorflow==2.5.0
