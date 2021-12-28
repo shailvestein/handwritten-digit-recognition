@@ -98,6 +98,7 @@ else:
         digit = predict_digit(image, model)
 
         output = f"Digit: {digit}"
+        st.text(digit)
         st.success(output)
     
     
