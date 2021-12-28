@@ -106,7 +106,8 @@ if submitted:
     image = preprocess_image(image)  
     st.markdown(preicting_text, unsafe_allow_html=True)
     digit = predict_digit(image, model)
-    st.text('Number ', digit)
+    preicted_text = <p style="color:White; text-align:center; background-color:Green; font-size: 20px;">Digit str(digit)</p>
+    st.markdown(preicted_text, unsafe_allow_html=True)
     
     
 hide_footer_style = """
