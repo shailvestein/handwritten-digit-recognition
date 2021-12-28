@@ -61,19 +61,21 @@ st.markdown(header_text_1, unsafe_allow_html=True)
 st.markdown(header_text_2, unsafe_allow_html=True)
 
 
+def load_image():
+    with st.form("input_form"):
+        # Taking input review here
+        # source: https://discuss.streamlit.io/t/change-font-size-and-font-color/12377/3
+        # enter_review_here = '<p style="color:Black; font-size: 20px;">Upload numerical digit here</p>'
+        # st.markdown(enter_review_here, unsafe_allow_html=True)
+        uploaded_file = st.file_uploader("Choose a file", type="jpg")
+        st.markdown('')
+        st.markdown('')
+        # Predict digit button
+        submitted = st.form_submit_button("Recognize digit")
+    return uploaded_file, submitted
 
-with st.form("input_form"):
-    # Taking input review here
-    # source: https://discuss.streamlit.io/t/change-font-size-and-font-color/12377/3
-    # enter_review_here = '<p style="color:Black; font-size: 20px;">Upload numerical digit here</p>'
-    # st.markdown(enter_review_here, unsafe_allow_html=True)
-    uploaded_file = st.file_uploader("Choose a file", type="jpg")
-    st.markdown('')
-    st.markdown('')
-    # Predict digit button
-    submitted = st.form_submit_button("Recognize digit")
-    
-            
+uploaded_image, submitted = load_image()
+
 if submitted:
     
     preicting_text = '<p style="color:White; text-align:center; background-color:Green; font-size: 20px;">recognizing...</p>'
