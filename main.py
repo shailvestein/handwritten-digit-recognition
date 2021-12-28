@@ -67,13 +67,13 @@ st.markdown(header_text_2, unsafe_allow_html=True)
 with st.form("input_form"):
     # Taking input review here
     # source: https://discuss.streamlit.io/t/change-font-size-and-font-color/12377/3
-    # enter_review_here = '<p style="color:Black; font-size: 20px;">Your review goes here</p>'
+    # enter_review_here = '<p style="color:Black; font-size: 20px;">Upload numerical digit here</p>'
     # st.markdown(enter_review_here, unsafe_allow_html=True)
-    review = st.text_input(label=' ', value='write your review here')
+    uploaded_file = st.file_uploader("Choose a file")
     st.markdown('')
     st.markdown('')
-    # Predict polarity button
-    submitted = st.form_submit_button("Analyse review")
+    # Predict digit button
+    submitted = st.form_submit_button("Recognize digit")
 
 
 # if submitted:
