@@ -90,7 +90,7 @@ with st.form("input_form"):
     # source: https://discuss.streamlit.io/t/change-font-size-and-font-color/12377/3
     # enter_review_here = '<p style="color:Black; font-size: 20px;">Upload numerical digit here</p>'
     # st.markdown(enter_review_here, unsafe_allow_html=True)
-    uploaded_file = st.file_uploader("Choose a file", type="jpg")
+    uploaded_file = st.file_uploader("Choose a file", type=["jpg", "png", "jpeg"])
     st.markdown('')
     st.markdown('')
     # Predict digit button
@@ -109,7 +109,7 @@ else:
         
         upload_mssg = '<p style="color:Black; font-size: 15px;">Uploaded image</p>'
         st.markdown(upload_mssg, unsafe_allow_html=True)
-        st.image(input_image, caption='', width=DIM[0])
+        st.image(image, caption='', width=DIM[0])
 
         digit = predict_digit(input_image, model)
 
