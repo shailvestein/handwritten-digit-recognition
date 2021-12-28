@@ -32,8 +32,8 @@ def preprocess_image(image):
     return normalized_image
 
 
-def predict_digit(normalized_image, model):
-    result = model.predict(normalized_image)
+def predict_digit(preprocessed_image, model):
+    result = model.predict(preprocessed_image)
     digit = np.argmax(result)
     return digit
 
@@ -100,11 +100,12 @@ if submitted:
     st.image(image, caption='')
     
     image = preprocess_image(image)    
+    digit = predict_digit(image)
     
     imgtype = type(image)
     imgshape = image.shape
 
-    st.text(imgtype)
+    st.text(digit)
     st.text(imgshape)
     
     
