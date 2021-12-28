@@ -10,7 +10,7 @@ def image_resize(image, width = 28, height = 28):
     # resize the image
     dim = (height, width)
     image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
-    image = cv2.cvtColor(image, interpolation = cv2.COLOR_BGR2GRAY)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     return np.array(image)
 
 
