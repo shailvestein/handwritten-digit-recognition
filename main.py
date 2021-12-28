@@ -1,4 +1,4 @@
-import numpy as np
+limport numpy as np
 from PIL import Image
 from PIL import *
 import tensorflow as tf
@@ -58,7 +58,7 @@ header_title = '<p style="color:Black; font-size: 40px;">Sentiment analysis</p>'
 st.markdown(header_title, unsafe_allow_html=True)
 # header_text_1 = '<p style="color:Black; font-size: 20px;">1.  This is AI based web-app, it uses support-vector-machine algorithm in backend to find polarity score.</p>'
 header_text_1 = '<p style="color:Black; font-size: 20px;">1.  This is AI based web-app.</p>'
-header_text_2 = '<p style="color:Black; font-size: 20px;">2.  It tells whether or not given product/movie review is good.</p>' # This app is 86% confident that given review is good/bad.</p>'
+header_text_2 = '<p style="color:Black; font-size: 20px;">2.  It tells which numerical digit is in the picture.</p>' # This app is 86% confident that given review is good/bad.</p>'
 st.markdown(header_text_1, unsafe_allow_html=True)
 st.markdown(header_text_2, unsafe_allow_html=True)
 
