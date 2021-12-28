@@ -105,14 +105,14 @@ else:
 
         
         image = Image.open(uploaded_file)
-        st.image(image, caption='Uploaded digit image', width=200)
+        caption = '<p style="color:Black; font-size: 20px;">1.  Uploaded digit image</p>'
+        st.image(image, caption=caption, width=200)
 
         input_image = preprocess_image(image)
 #         st.image(input_image, caption='Uploaded digit image', width=200)
         digit = predict_digit(input_image, model)
 
         output = f"Digit: {digit}"
-        st.text(digit)
         st.success(output)
     
     
