@@ -105,11 +105,11 @@ else:
 
         
         image = Image.open(uploaded_file)
-        caption = '<p style="color:Black; font-size: 20px;">1.  Uploaded digit image</p>'
-        st.image(image, caption=caption, width=200)
-
         input_image = preprocess_image(image)
-#         st.image(input_image, caption='Uploaded digit image', width=200)
+        
+        st.text('Uploaded image')
+        st.image(image, caption='', width=DIM[0])
+
         digit = predict_digit(input_image, model)
 
         output = f"Digit: {digit}"
