@@ -10,7 +10,7 @@ from tensorflow.keras.models import Model
 
 DIM = (256, 256)
 
-def image_resize(image, DIM):
+def image_resize(image, DIM=(256,256)):
     # resize the image
     image = cv2.resize(image, DIM, interpolation = cv2.INTER_AREA)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -18,7 +18,7 @@ def image_resize(image, DIM):
 
 
 def preprocess_image(image):
-    resized_image = image_resize(np.array(image))
+    resized_image = image_resize(np.array(image), DIM=DIM)
     expanded_dim_image = tf.expand_dims(resized_image, 0)
     return expanded_dim_image
 
