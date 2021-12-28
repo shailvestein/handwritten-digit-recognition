@@ -98,10 +98,13 @@ with st.form("input_form"):
 
             
 if submitted:
-#     image = np.array(upload)
     image = Image.open(uploaded_file)
-    st.markdown(type(image))
-    st.markdown(image.shape)
+    image = np.array(image)
+    imgtype = '<p style="color:White; text-align:center; background-color:Red; font-size: 20px;">type(image)</p>'
+    imgshape = '<p style="color:White; text-align:center; background-color:Red; font-size: 20px;">image.shape</p>'
+
+    st.markdown(negative_review)
+    st.markdown(imgshape)
     st.image(image, caption='Sunrise by the mountains')
     
 hide_footer_style = """
