@@ -95,19 +95,18 @@ with st.form("input_form"):
 
             
 if submitted:
+    
+    preicting_text = '<p style="color:White; text-align:center; background-color:Green; font-size: 20px;">recognizing...</p>'
+    
     image = Image.open(uploaded_file)
     input_image = image.rotate(90, Image.NEAREST, expand = 1)
     st.image(input_image, caption='Uploaded digit image', width=200)
-#     st.image(image, caption='Uploaded digit image')
+    # st.image(image, caption='Uploaded digit image')
     
-    image = preprocess_image(image)    
+    image = preprocess_image(image)  
+    st.text(preicting_text)
     digit = predict_digit(image, model)
-    
-    imgtype = type(image)
-    imgshape = image.shape
-
     st.text(digit)
-    st.text(imgshape)
     
     
 hide_footer_style = """
