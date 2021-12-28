@@ -107,7 +107,8 @@ else:
         image = Image.open(uploaded_file)
         input_image = preprocess_image(image)
         
-        st.text('Uploaded image')
+        upload_mssg = '<p style="color:Black; font-size: 10px;">Uploaded image</p>'
+        st.markdown(upload_mssg, unsafe_allow_html=True)
         st.image(image, caption='', width=DIM[0])
 
         digit = predict_digit(input_image, model)
