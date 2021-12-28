@@ -95,7 +95,7 @@ else:
         # input_image = image.rotate(90, Image.NEAREST, expand = 1)
         st.image(image, caption='Uploaded digit image', width=200)
 
-        image = preprocess_image(image)  
+        image = preprocess_image(np.array(image))
 
         digit = predict_digit(image, model)
 
