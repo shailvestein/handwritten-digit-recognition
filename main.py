@@ -5,15 +5,11 @@ import tensorflow as tf
 from tensorflow import keras
 import streamlit as st
 
-H, W = 28, 28
 
-def image_resize(image, width = None, height = None):
+def image_resize(image, width = 28, height = 28):
     # resize the image
-#     resized = cv2.resize(image, dim, interpolation = inter)
-#     resized = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
-#     # return the resized image
-#     return np.array(resized)
-    pass
+    image = image.resize((height,width), Image.ANTIALIAS)
+    return np.array(resized)
 
 
 
@@ -100,17 +96,16 @@ with st.form("input_form"):
             
 if submitted:
     image = Image.open(uploaded_file)
+    st.image(image, caption='')
     
-    image = image.resize((H,W), Image.ANTIALIAS)
-    image = np.array(image)
-    
+    image = image_resize(image)    
     
     imgtype = type(image)
     imgshape = image.shape
 
     st.text(imgtype)
     st.text(imgshape)
-    st.image(image, caption='')
+    
     
 hide_footer_style = """
 <style>
