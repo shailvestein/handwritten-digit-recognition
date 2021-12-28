@@ -100,7 +100,7 @@ if submitted:
     st.image(image, caption='')
     
     image = preprocess_image(image)    
-    digit = predict_digit(image)
+    digit = predict_digit(image, model)
     
     imgtype = type(image)
     imgshape = image.shape
