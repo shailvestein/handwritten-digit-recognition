@@ -7,11 +7,12 @@ from tensorflow import keras
 from tensorflow.keras.layers import Input, Conv2D, Dropout, MaxPool2D, Dense, Flatten
 from tensorflow.keras.models import Model
 
-DIM = (256, 256)
+DIM = (28,28)
 
-def image_resize(image, DIM=(256,256)):
+def image_resize(image, DIM=(28,28)):
     # resize the image
     image = cv2.resize(image, DIM, interpolation = cv2.INTER_AREA)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     return image
 
 
@@ -21,16 +22,17 @@ def preprocess_image(image):
     return expanded_dim_image
 
 
-def load_model():
+def load_model(model_name, shape):
+    
 
-    inputs = Input(shape=(DIM[0], DIM[1], 3))
-    conv1 = Conv2D(8, (3,3), activation='relu')(inputs)
+    inputs = Input(shape=shape)
+    conv1 = Conv2D(4, (2,2), activation='relu')(inputs)
     pool = MaxPool2D()(conv1)
-    conv2 = Conv2D(16, (3,3), activation='relu')(pool)
+    conv2 = Conv2D(8, (2,2), activation='relu')(pool)
     pool = MaxPool2D()(conv2)
-    conv3 = Conv2D(16, (3,3), activation='relu')(pool)
+    conv3 = Conv2D(8, (2,2), activation='relu')(pool)
     pool = MaxPool2D()(conv3)
-    conv4 = Conv2D(16, (3,3), activation='relu')(pool)
+    conv4 = Conv2D(16, (2,2), activation='relu')(pool)
     flatten = Flatten()(conv4)
     layer = Dense(256, activation='relu')(flatten)
     dropout = Dropout(0.1)(layer)
@@ -40,10 +42,11 @@ def load_model():
 
     output = Dense(10, activation='softmax')(layer)
 
+
     model = Model(inputs=inputs, outputs=output)
 
     model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics='accuracy')
-    model.load_weights('./digit_recognizer_model.h5')
+    model.load_weights(model_name)
     return model
 
 
@@ -52,7 +55,7 @@ def predict_digit(preprocessed_image, model):
     digit = np.argmax(result)
     return digit
 
-model = load_model()
+model = load_model('mnist_digit_recognizer.h5', (DIM[0], DIM[1], 1))
 
 
 
