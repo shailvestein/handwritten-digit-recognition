@@ -109,7 +109,7 @@ else:
         
         upload_mssg = '<p style="color:Black; font-size: 15px;">Uploaded image</p>'
         st.markdown(upload_mssg, unsafe_allow_html=True)
-        st.image(image, caption='', width=DIM[0])
+        st.image(input_image, caption='', width=DIM[0])
 
         digit = predict_digit(input_image, model)
 
