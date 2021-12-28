@@ -4,6 +4,7 @@ from PIL import *
 import tensorflow as tf
 from tensorflow import keras
 import streamlit as st
+import cv2
 
 def image_resize(image, width = None, height = None):
     # resize the image
