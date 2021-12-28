@@ -103,7 +103,7 @@ if submitted:
     imgtype = '<p style="color:White; text-align:center; background-color:Red; font-size: 20px;">type(image)</p>'
     imgshape = '<p style="color:White; text-align:center; background-color:Red; font-size: 20px;">image.shape</p>'
 
-    st.markdown(negative_review)
+    st.markdown(imgtype)
     st.markdown(imgshape)
     st.image(image, caption='Sunrise by the mountains')
     
