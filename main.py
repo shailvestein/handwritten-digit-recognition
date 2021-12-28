@@ -1,4 +1,4 @@
-limport numpy as np
+import numpy as np
 from PIL import Image
 from PIL import *
 import tensorflow as tf
@@ -54,7 +54,7 @@ st.markdown(
 
     
 # Header of streamlit webpage
-header_title = '<p style="color:Black; font-size: 40px;">Sentiment analysis</p>'
+header_title = '<p style="color:Black; font-size: 40px;">Hand written digit recognition</p>'
 st.markdown(header_title, unsafe_allow_html=True)
 # header_text_1 = '<p style="color:Black; font-size: 20px;">1.  This is AI based web-app, it uses support-vector-machine algorithm in backend to find polarity score.</p>'
 header_text_1 = '<p style="color:Black; font-size: 20px;">1.  This is AI based web-app.</p>'
