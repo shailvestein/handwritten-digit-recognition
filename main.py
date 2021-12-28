@@ -96,9 +96,9 @@ with st.form("input_form"):
             
 if submitted:
     image = Image.open(uploaded_file)
-#     input_image = image.rotate(90, Image.NEAREST, expand = 1)
-#     st.image(input_image, caption='Uploaded digit image')
-    st.image(image, caption='Uploaded digit image')
+    input_image = image.rotate(90, Image.NEAREST, expand = 1)
+    st.image(input_image, caption='Uploaded digit image', width=50)
+#     st.image(image, caption='Uploaded digit image')
     
     image = preprocess_image(image)    
     digit = predict_digit(image, model)
