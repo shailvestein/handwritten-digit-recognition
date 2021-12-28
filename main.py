@@ -100,12 +100,12 @@ with st.form("input_form"):
 if submitted:
     image = Image.open(uploaded_file)
     image = np.array(image)
-    imgtype = '<p style="color:White; text-align:center; background-color:Red; font-size: 20px;">type(image)</p>'
-    imgshape = '<p style="color:White; text-align:center; background-color:Red; font-size: 20px;">image.shape</p>'
+    imgtype = type(image)
+    imgshape = image.shape
 
-    st.markdown(imgtype)
-    st.markdown(imgshape)
-    st.image(image, caption='Sunrise by the mountains')
+    st.text(imgtype)
+    st.text(imgshape)
+    st.image(image, caption='')
     
 hide_footer_style = """
 <style>
