@@ -1,10 +1,9 @@
+import streamlit as st
 import numpy as np
 import cv2
-from PIL import Image, ImageOps
+from PIL import Image
 import tensorflow as tf
 from tensorflow import keras
-import streamlit as st
-
 from tensorflow.keras.layers import Input, Conv2D, Dropout, MaxPool2D, Dense, Flatten
 from tensorflow.keras.models import Model
 
@@ -18,7 +17,7 @@ def image_resize(image, DIM=(256,256)):
 
 def preprocess_image(image):
     resized_image = image_resize(np.array(image), DIM=DIM)
-    expanded_dim_image = tf.expand_dims(resized_image, 0)
+    expanded_dim_image = tf.expand_dims(resized_img, 0)
     return expanded_dim_image
 
 
@@ -106,12 +105,10 @@ else:
 
         
         image = Image.open(uploaded_file)
-
-        # input_image = image.rotate(90, Image.NEAREST, expand = 1)
         st.image(image, caption='Uploaded digit image', width=200)
 
         input_image = preprocess_image(image)
-        st.image(input_image, caption='Uploaded digit image', width=200)
+#         st.image(input_image, caption='Uploaded digit image', width=200)
         digit = predict_digit(input_image, model)
 
         output = f"Digit: {digit}"
