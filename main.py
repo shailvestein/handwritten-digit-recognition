@@ -98,8 +98,8 @@ with st.form("input_form"):
 
             
 if submitted:
-    image = np.array(upload)
-    st.image(image, caption='Sunrise by the mountains')
+#     image = np.array(upload)
+    st.image(upload, caption='Sunrise by the mountains')
     
 hide_footer_style = """
 <style>
