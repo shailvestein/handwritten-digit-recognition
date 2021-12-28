@@ -9,9 +9,9 @@ import streamlit as st
 def image_resize(image, width = 28, height = 28):
     # resize the image
     dim = (height, width)
-    resized = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
-    gray_image = cv2.cvtColor(resized, interpolation = cv2.COLOR_BGR2GRAY)
-    return np.array(gray_image)
+    image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
+    image = cv2.cvtColor(image, interpolation = cv2.COLOR_BGR2GRAY)
+    return np.array(image)
 
 
 
@@ -27,7 +27,7 @@ def load_model():
 
 
 def preprocess_image(image):
-    resized_image = image_resize(image)
+    resized_image = image_resize(np.array(image))
     normalized_image = resized_image/255
     normalized_image = normalized_image.reshape(1,-1)
     return normalized_image
@@ -95,7 +95,7 @@ else:
         # input_image = image.rotate(90, Image.NEAREST, expand = 1)
         st.image(image, caption='Uploaded digit image', width=200)
 
-        image = preprocess_image(np.array(image))
+        image = preprocess_image(image)
 
         digit = predict_digit(image, model)
 
