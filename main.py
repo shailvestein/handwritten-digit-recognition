@@ -9,8 +9,8 @@ import streamlit as st
 def image_resize(image, width = 28, height = 28):
     # resize the image
     resized_image = image.resize((height,width), Image.ANTIALIAS)
-    resized_image = ImageOps.grayscale(resized_image)
-    return np.array(resized_image)
+    gray_image = ImageOps.grayscale(resized_image)
+    return np.array(gray_image)
 
 
 
@@ -25,8 +25,7 @@ def load_model():
     return seq_model
 
 
-def preprocess_image(image):
-    resized_image = image_resize(image, width=28, height=28)
+def preprocess_image(resized_image):
     normalized_image = resized_image/255
     normalized_image = normalized_image.reshape(1,-1)
     return normalized_image
@@ -99,8 +98,8 @@ if submitted:
     image = Image.open(uploaded_file)
     st.image(image, caption='')
     
-    image = image_resize(image)    
-    image = image.resize(1,-1)
+    image = preprocess_image(image)    
+    
     imgtype = type(image)
     imgshape = image.shape
 
