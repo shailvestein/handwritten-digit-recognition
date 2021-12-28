@@ -86,7 +86,8 @@ if submitted:
     image = preprocess_image(image)  
     digit = predict_digit(image, model)
     st.write('Digit: ', digit)
-    st.success("Successful", digit)
+    output = f"Digit: {str(digit)}"
+    st.success(output)
     
     
 hide_footer_style = """
