@@ -1,6 +1,6 @@
 import numpy as np
-from PIL import Image
-from PIL import *
+from PIL import Image, ImageOps
+# from PIL import *
 import tensorflow as tf
 from tensorflow import keras
 import streamlit as st
@@ -9,6 +9,7 @@ import streamlit as st
 def image_resize(image, width = 28, height = 28):
     # resize the image
     resized_image = image.resize((height,width), Image.ANTIALIAS)
+    resized_image = ImageOps.grayscale(resized_image)
     return np.array(resized_image)
 
 
