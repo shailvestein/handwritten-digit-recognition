@@ -25,7 +25,8 @@ def load_model():
     return seq_model
 
 
-def preprocess_image(resized_image):
+def preprocess_image(image):
+    resized_image = image_resize(image)
     normalized_image = resized_image/255
     normalized_image = normalized_image.reshape(1,-1)
     return normalized_image
@@ -98,7 +99,7 @@ if submitted:
     image = Image.open(uploaded_file)
     st.image(image, caption='')
     
-    image = image_resize(image)    
+    image = preprocess_image(image)    
     
     imgtype = type(image)
     imgshape = image.shape
