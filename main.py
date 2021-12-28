@@ -104,7 +104,7 @@ if submitted:
     # st.image(image, caption='Uploaded digit image')
     
     image = preprocess_image(image)  
-    st.text(preicting_text)
+    st.text(preicting_text, unsafe_allow_html=True)
     digit = predict_digit(image, model)
     st.text(digit)
     
