@@ -75,15 +75,18 @@ with st.form("input_form"):
     # Predict digit button
     submitted = st.form_submit_button("Recognize digit")
 
+image = Image.open(uploaded_file)
+
+st.image(image, caption='Sunrise by the mountains')
 
 # if submitted:
-#     # If user dosen't enter any word/sentence and press predict polarity than show this message
-#     if review == '' or review == 'write your review here':
-#         review_error = '<p style="color:Orange; text-align:center; background-color:Blue; font-size: 20px;">**Please enter your review!**</p>'
-#         st.markdown(review_error, unsafe_allow_html=True)
+# #     # If user dosen't enter any word/sentence and press predict polarity than show this message
+# #     if review == '' or review == 'write your review here':
+# #         review_error = '<p style="color:Orange; text-align:center; background-color:Blue; font-size: 20px;">**Please enter your review!**</p>'
+# #         st.markdown(review_error, unsafe_allow_html=True)
         
-#     # It will show polarity of review
-#     else:
+# #     # It will show polarity of review
+# #     else:
 #         #positive_review = '<p style="color:Green; text-align:center; font-size: 20px;">Positive review</p>'
 #         #negative_review = '<p style="color:Red; text-align:center; font-size: 20px;">Negative review</p>'
 #         positive_review = '<p style="color:White; text-align:center; background-color:Green; font-size: 20px;">Positive</p>'
