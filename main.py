@@ -100,7 +100,7 @@ if submitted:
     st.image(image, caption='')
     
     image = image_resize(image)    
-    
+    image = image.resize(1,-1)
     imgtype = type(image)
     imgshape = image.shape
 
