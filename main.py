@@ -89,7 +89,7 @@ if uploaded_file is not None:
         output = f"Digit: {str(digit)}"
         st.success(output)
 else:
-    preicting_text = '<p style="color:White; text-align:center; background-color:Green; font-size: 20px;">please upload an image contains digit!</p>'
+    preicting_text = '<p style="color:White; text-align:center; background-color:Red; font-size: 20px;">please upload an image contains digit!</p>'
     st.markdown(preicting_text, unsafe_allow_html=True)
     
     
