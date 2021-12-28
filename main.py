@@ -1,14 +1,16 @@
 import numpy as np
-import cv2
+from PIL import Image
+from PIL import *
 import tensorflow as tf
 import streamlit as st
 
 def image_resize(image, width = None, height = None, inter = cv2.INTER_AREA):
     # resize the image
-    resized = cv2.resize(image, dim, interpolation = inter)
-    resized = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
-    # return the resized image
-    return np.array(resized)
+#     resized = cv2.resize(image, dim, interpolation = inter)
+#     resized = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
+#     # return the resized image
+#     return np.array(resized)
+    pass
 
 
 
@@ -73,23 +75,23 @@ with st.form("input_form"):
     submitted = st.form_submit_button("Analyse review")
 
 
-if submitted:
-    # If user dosen't enter any word/sentence and press predict polarity than show this message
-    if review == '' or review == 'write your review here':
-        review_error = '<p style="color:Orange; text-align:center; background-color:Blue; font-size: 20px;">**Please enter your review!**</p>'
-        st.markdown(review_error, unsafe_allow_html=True)
+# if submitted:
+#     # If user dosen't enter any word/sentence and press predict polarity than show this message
+#     if review == '' or review == 'write your review here':
+#         review_error = '<p style="color:Orange; text-align:center; background-color:Blue; font-size: 20px;">**Please enter your review!**</p>'
+#         st.markdown(review_error, unsafe_allow_html=True)
         
-    # It will show polarity of review
-    else:
-        #positive_review = '<p style="color:Green; text-align:center; font-size: 20px;">Positive review</p>'
-        #negative_review = '<p style="color:Red; text-align:center; font-size: 20px;">Negative review</p>'
-        positive_review = '<p style="color:White; text-align:center; background-color:Green; font-size: 20px;">Positive</p>'
-        negative_review = '<p style="color:White; text-align:center; background-color:Red; font-size: 20px;">Negative</p>'
+#     # It will show polarity of review
+#     else:
+#         #positive_review = '<p style="color:Green; text-align:center; font-size: 20px;">Positive review</p>'
+#         #negative_review = '<p style="color:Red; text-align:center; font-size: 20px;">Negative review</p>'
+#         positive_review = '<p style="color:White; text-align:center; background-color:Green; font-size: 20px;">Positive</p>'
+#         negative_review = '<p style="color:White; text-align:center; background-color:Red; font-size: 20px;">Negative</p>'
         
-        if polarity == 1:
-            st.markdown(positive_review, unsafe_allow_html=True)
-        else:
-            st.markdown(negative_review, unsafe_allow_html=True)
+#         if polarity == 1:
+#             st.markdown(positive_review, unsafe_allow_html=True)
+#         else:
+#             st.markdown(negative_review, unsafe_allow_html=True)
 
             
 hide_footer_style = """
