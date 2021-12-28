@@ -70,14 +70,13 @@ with st.form("input_form"):
     # enter_review_here = '<p style="color:Black; font-size: 20px;">Upload numerical digit here</p>'
     # st.markdown(enter_review_here, unsafe_allow_html=True)
     upload = st.file_uploader("Choose a file", type="jpg")
-    image = np.array(upload.read())
     st.markdown('')
     st.markdown('')
     # Predict digit button
     submitted = st.form_submit_button("Recognize digit")
 
 # image = Image.open(uploaded_file)
-
+image = np.array(upload.read())
 st.image(image, caption='Sunrise by the mountains')
 
 # if submitted:
