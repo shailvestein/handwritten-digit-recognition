@@ -112,7 +112,7 @@ else:
         st.image(image, caption='Uploaded digit image', width=200)
 
         input_image = preprocess_image(image)
-
+        st.image(input_image, caption='Uploaded digit image', width=200)
         digit = predict_digit(input_image, model)
 
         output = f"Digit: {digit}"
