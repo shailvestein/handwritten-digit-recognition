@@ -8,8 +8,8 @@ import streamlit as st
 
 def image_resize(image, width = 28, height = 28):
     # resize the image
-    image = image.resize((height,width), Image.ANTIALIAS)
-    return np.array(resized)
+    resized_image = image.resize((height,width), Image.ANTIALIAS)
+    return np.array(resized_image)
 
 
 
