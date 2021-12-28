@@ -98,7 +98,7 @@ if submitted:
     image = Image.open(uploaded_file)
     st.image(image, caption='')
     
-    image = preprocess_image(image)    
+    image = image_resize(image)    
     
     imgtype = type(image)
     imgshape = image.shape
