@@ -90,8 +90,8 @@ else:
         
         image = Image.open(uploaded_file)
 
-        input_image = image.rotate(90, Image.NEAREST, expand = 1)
-        st.image(input_image, caption='Uploaded digit image', width=200)
+        # input_image = image.rotate(90, Image.NEAREST, expand = 1)
+        st.image(image, caption='Uploaded digit image', width=200)
 
         image = preprocess_image(image)  
 
